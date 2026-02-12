@@ -7,10 +7,10 @@ export class LoginPage {
     await this.page.goto('https://www.saucedemo.com');
   }
 
-  async login(username: string, password: string) {
-    await this.page.locator('input[data-test="username"]').fill(username);
-    await this.page.locator('input[data-test="password"]').fill(password);
-    await this.page.locator('input[data-test="login-button"]').click();
+  async login(user: { username: string; password: string }) {
+    await this.page.locator('[data-test="username"]').fill(user.username);
+    await this.page.locator('[data-test="password"]').fill(user.password);
+    await this.page.locator('[data-test="login-button"]').click();
   }
 
   get errorMessage() {
