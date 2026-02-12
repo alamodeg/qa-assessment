@@ -14,6 +14,6 @@ export class LoginPage {
   }
 
   get errorMessage() {
-    return this.page.locator('div[data-test="error"]');
+    return this.page.locator('[data-test="error"]');
   }
 }
