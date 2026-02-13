@@ -24,4 +24,16 @@ test.describe('Login', () => {
       .toContainText('Epic sadface: Username and password do not match any user in this service');
   });
 
+    test('should show error when locked out user tries to login', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+
+    await loginPage.goto();
+    await loginPage.login(USERS.lockedOut);
+
+    await expect(loginPage.errorMessage)
+      .toContainText('Epic sadface: Sorry, this user has been locked out.');
+    
+    await expect(page).not.toHaveURL(/inventory/);
+  });
+
 });
