@@ -34,5 +34,4 @@ test.describe('Inventory', () => {
     await expect(inventoryPage.cartBadge).toHaveText('1');
   });
 
-
 });

@@ -7,8 +7,11 @@ export class InventoryPage {
   readonly header: Locator;
   readonly firstItemPrice: Locator;
   readonly firstItemImg: Locator;
-  readonly addToCartButton: Locator;
   readonly cartBadge: Locator;
+  readonly addToCartButton: Locator;
+  readonly addToCartBikeLight: Locator;
+  readonly addToCartBoltTShirt: Locator;
+  readonly addToCartOnesie: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -17,8 +20,11 @@ export class InventoryPage {
     this.header = page.locator('.header_secondary_container');
     this.firstItemPrice = page.locator('.inventory_item_price').first();
     this.firstItemImg = page.locator('.inventory_item_img').first();
-    this.addToCartButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
     this.cartBadge = page.locator('.shopping_cart_badge');
+    this.addToCartButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+    this.addToCartBikeLight = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]');
+    this.addToCartBoltTShirt = page.locator('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]');
+    this.addToCartOnesie = page.locator('[data-test="add-to-cart-sauce-labs-onesie"]')
   }
 
   async goto() {
@@ -27,5 +33,16 @@ export class InventoryPage {
 
   async addBackpackToCart() {
     await this.addToCartButton.click();
+  }
+    async addBikeLightToCart() {
+    await this.addToCartBikeLight.click();
+  }
+
+  async addBoltTShirtToCart() {
+    await this.addToCartBoltTShirt.click();
+  }
+
+  async addOnesieToCart() {
+    await this.addToCartOnesie.click();
   }
 }

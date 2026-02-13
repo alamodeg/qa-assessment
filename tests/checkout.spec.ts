@@ -46,9 +46,9 @@ test.describe('Checkout Flow', () => {
 
     await inventoryPage.goto();
 
-    await inventoryPage.page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
-    await inventoryPage.page.locator('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]').click();
-    await inventoryPage.page.locator('[data-test="add-to-cart-sauce-labs-onesie"]').click();
+    await inventoryPage.addBikeLightToCart();
+    await inventoryPage.addBoltTShirtToCart();
+    await inventoryPage.addOnesieToCart();
 
     await expect(inventoryPage.cartBadge).toHaveText('3');
 
@@ -84,7 +84,7 @@ test.describe('Checkout Flow', () => {
     await cartPage.clickCheckout();
     await checkoutPage.continue();
 
-    // 3️ Check that at least one error message is visible
+    // Check that at least one error message is visible
     // Note: Sauce Demo only shows the error for the first empty field at a time,
     // so we validate that any of the required field errors appears
     const errorContainer = checkoutPage.page.locator('[data-test="error"]');

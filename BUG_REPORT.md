@@ -43,7 +43,7 @@ The user should not be able to proceed to checkout; the app should show a messag
 The app allows proceeding to the Checkout page even when the cart is empty.
 
 ### Evidence
-![empty-cart-checkout](screenshots/EmpyCart1.png)
+![empty-cart-checkout](screenshots/EmptyCartCheckout.gif)
 
 ### Notes
 This could allow orders with no items, which is a critical edge case.
