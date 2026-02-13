@@ -69,4 +69,31 @@ test.describe('Checkout Flow', () => {
     await expect(checkoutPage.confirmationMessage).toHaveText(/Thank you for your order!/);
   });
 
+  test('checkout with missing form fields shows error messages', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    const inventoryPage = new InventoryPage(page);
+    const cartPage = new CartPage(page);
+    const checkoutPage = new CheckoutPage(page);
+
+    await loginPage.goto();
+    await loginPage.login(USERS.valid);
+    await inventoryPage.goto();
+    await inventoryPage.addBackpackToCart();
+
+    await cartPage.goto();
+    await cartPage.clickCheckout();
+    await checkoutPage.continue();
+
+    // 3️ Check that at least one error message is visible
+    // Note: Sauce Demo only shows the error for the first empty field at a time,
+    // so we validate that any of the required field errors appears
+    const errorContainer = checkoutPage.page.locator('[data-test="error"]');
+    const errorText = await errorContainer.textContent();
+
+    expect(
+      errorText?.includes('First Name') ||
+      errorText?.includes('Last Name') ||
+      errorText?.includes('Postal Code')
+    ).toBeTruthy();
+  });
 });

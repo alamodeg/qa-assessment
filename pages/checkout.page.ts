@@ -16,6 +16,8 @@ export class CheckoutPage {
 
   readonly confirmationMessage: Locator;
 
+  readonly firstNameError: Locator;
+
   constructor(page: Page) {
     this.page = page;
 
@@ -31,6 +33,8 @@ export class CheckoutPage {
     this.totalLabel = page.locator('.summary_total_label');
 
     this.confirmationMessage = page.locator('.complete-header');
+
+    this.firstNameError = page.locator('[data-test="error"]');
   }
 
   async goto() {
