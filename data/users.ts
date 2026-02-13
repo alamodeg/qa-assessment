@@ -1,5 +1,5 @@
 export const USERS = {
-  standard: {
+  valid: {
     username: 'standard_user',
     password: 'secret_sauce',
   },

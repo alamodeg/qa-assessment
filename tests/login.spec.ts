@@ -8,7 +8,7 @@ test.describe('Login', () => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
-    await loginPage.login(USERS.standard);
+    await loginPage.login(USERS.valid);
 
     await expect(page).toHaveURL(/inventory/);
     await expect(page.locator('.inventory_list')).toBeVisible();
