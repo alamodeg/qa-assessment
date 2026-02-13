@@ -46,10 +46,6 @@ test.describe('Checkout Flow', () => {
 
     await inventoryPage.goto();
 
-    await inventoryPage.addBikeLightToCart();
-    await inventoryPage.addBoltTShirtToCart();
-    await inventoryPage.addOnesieToCart();
-
     await expect(inventoryPage.cartBadge).toHaveText('3');
 
     await cartPage.goto();
